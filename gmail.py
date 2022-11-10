@@ -4,7 +4,7 @@ from email.utils import formatdate
 
 def send():
     FROM_ADRESS = "mitukifukumoto@gmail.com"
-    PASSWORD = "momoclo3150"
+    PASSWORD = "lzxqcucqnspqcvpy"
     TO_ADRESS = "mitukifukumoto@gmail.com"
     smtpobj = smtplib.SMTP('smtp.gmail.com', 587)
     smtpobj.ehlo()
@@ -20,3 +20,7 @@ def send():
     msg['Date'] = formatdate()
     smtpobj.sendmail(FROM_ADRESS,TO_ADRESS,msg.as_string())
     smtpobj.close()
+
+
+if __name__ ==  '__main__':
+	send()
