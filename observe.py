@@ -52,9 +52,10 @@ class Observer:
 		"/html/body/div/div[2]/div[2]/form[5]/div/div/div/p[2]/input[2]",
 		"/html/body/div/div[2]/div[2]/form[6]/p/input"])
 		time.sleep(3)  # ページ遷移を挟むため少し待つ
+		self.driver.switch_to.window(self.driver.window_handles[1])
 		self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/div/ul[1]/li/a/img")
 
-		time.sleep(5)
+		time.sleep(10)
 		#gmail.send()
 		self.driver.quit()
 
