@@ -12,7 +12,7 @@ class Observer:
 	PW = "19971210"
 	driver = webdriver.Chrome()
 	def sclick(self,xpath,shift=False):
-		time.sleep(1)
+		time.sleep(0.2)
 		if(shift):
 			element = self.driver.find_element(By.XPATH,xpath)
 			actions = ActionChains(self.driver)  # ActionChainを作成
