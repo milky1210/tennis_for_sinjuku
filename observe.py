@@ -54,9 +54,18 @@ class Observer:
 		time.sleep(3)  # ページ遷移を挟むため少し待つ
 		self.driver.switch_to.window(self.driver.window_handles[1])
 		self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/div/ul[1]/li/a/img")
-
+		
+		# ボタン連打
+		self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/div/div/table/tbody[3]/tr/td[5]/input")
+		self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/div/div/table/tbody[10]/tr/td[5]/input")
+		self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/div/div/table/tbody[10]/tr/td[6]/input")
+		self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/p/input")  # 予約リスト画面へ遷移
+		time.sleep(3)
+		self.sclick("/html/body/div/div[2]/div[2]/p/a/img")
+		time.sleep(3)
+		#確定
 		time.sleep(10)
-		#gmail.send()
+		#gmail.send() 
 		self.driver.quit()
 
 
