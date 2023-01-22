@@ -14,6 +14,7 @@ class Observer:
     driver = webdriver.Chrome()
 
     def sclick(self, xpath, shift=False):
+
         time.sleep(0.2)
         if shift:
             element = self.driver.find_element(By.XPATH, xpath)
@@ -88,28 +89,30 @@ class Observer:
 
         if month == 1:  # 来月なら遷移。
             self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/ul/li[2]/a[3]")
+        selected = False
         # ボタン連打
-        for i in range(31):
-            xpath = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/table/tbody[{}]/tr/td[5]/input".format(
-                i
+        for dt in date_time:
+            xpath = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/table/tbody[{}]/tr/td[{}]/input".format(
+                dt[0],dt[1]
             )
             if (
                 len(self.driver.find_elements(By.XPATH, xpath)) > 0
             ):  # find_elementsの複数形に注意
                 self.sclick(xpath)
-            else:
-                print(xpath + "はとれねぇよい")
+                selected = True
         self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/p/input")  # 予約リスト画面へ遷移
-        time.sleep(3)
+        time.sleep(10)
         xpath = "/html/body/div/div[2]/div[2]/p/a/img"
-        if len(self.driver.find_elements(By.Xpath, xpath)) > 0:
+        if len(self.driver.find_elements(By.XPATH, xpath)) > 0 and selected:
             self.sclick(xpath)
         time.sleep(3)
         # 確定
-        if False:
+        if True:
             xpath = "/html/body/div/div[2]/div[2]/p/a/img"
-            if len(self.driver.find_elements(By.Xpath, xpath)) > 0:
+            if len(self.driver.find_elements(By.XPATH, xpath)) > 0 and selected:
                 self.sclick(xpath)
+                print("get!")
+                print(date_time)
 
         time.sleep(10)
         # gmail.send()
@@ -117,5 +120,6 @@ class Observer:
 
 
 if __name__ == "__main__":
+    # observerのテスト用スクリプト
     observer = Observer()
     observer.observe(month=1)
