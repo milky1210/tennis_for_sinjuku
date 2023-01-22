@@ -1,4 +1,5 @@
 import time                            # スリープを使うために必要
+import json
 from selenium import webdriver         # Webブラウザを自動操作する（python -m pip install selenium)
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -8,8 +9,11 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 
 class Observer:
-	ID = "00016732"
-	PW = "19971210"
+	json_open = open('pw_id.json', 'r')
+	json_load = json.load(json_open)
+	print(json_load)
+	ID = json_load["ID"]
+	PW = json_load["PW"]
 	driver = webdriver.Chrome()
 	def sclick(self,xpath,shift=False):
 		time.sleep(0.2)
@@ -25,7 +29,10 @@ class Observer:
 		for xpath in xpaths:
 			self.sclick(xpath,shift)
 
-	def observe(self):
+	def observe(self,month=0,date_time=[[0,5]]):  
+		# month: 0->今月,1->来月
+		# date: 取りたい日付のリスト
+		# time: 取りたい時
 		self.driver.get('https://user.shinjuku-shisetsu-yoyaku.jp/regasu/reserve/gin_menu')   # ここから始めないと不正な値とか言われるorz
 		self.sclick("/html/body/div/div[2]/ul[1]/li[2]/dl/dt/form/input[2]")  # 高機能操作をクリック
 		time.sleep(1)
