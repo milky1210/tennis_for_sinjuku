@@ -3,7 +3,6 @@ import json
 from selenium import webdriver         # Webブラウザを自動操作する（python -m pip install selenium)
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-import gmail
 from selenium.webdriver.common.action_chains import ActionChains
 
 
@@ -11,7 +10,6 @@ from selenium.webdriver.common.action_chains import ActionChains
 class Observer:
 	json_open = open('pw_id.json', 'r')
 	json_load = json.load(json_open)
-	print(json_load)
 	ID = json_load["ID"]
 	PW = json_load["PW"]
 	driver = webdriver.Chrome()
