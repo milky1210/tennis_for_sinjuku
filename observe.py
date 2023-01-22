@@ -57,9 +57,12 @@ class Observer:
 		"/html/body/div/div[2]/div[2]/form[5]/div/div/div/p[2]/input[2]",
 		"/html/body/div/div[2]/div[2]/form[6]/p/input"])
 		time.sleep(3)  # ページ遷移を挟むため少し待つ
+		
 		self.driver.switch_to.window(self.driver.window_handles[1])
 		self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/div/ul[1]/li/a/img")
-		
+
+		if(month==1):  # 来月なら遷移。
+			self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/ul/li[2]/a[3]")
 		# ボタン連打
 		for i in range(31):
 			xpath = "/html/body/div/div[2]/div[2]/div[2]/div/div/div/table/tbody[{}]/tr/td[5]/input".format(i)
@@ -69,9 +72,16 @@ class Observer:
 				print(xpath+"はとれねぇよい")
 		self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/p/input")  # 予約リスト画面へ遷移
 		time.sleep(3)
-		self.sclick("/html/body/div/div[2]/div[2]/p/a/img")
+		xpath = "/html/body/div/div[2]/div[2]/p/a/img"
+		if(len(self.driver.find_elements(By.Xpath,xpath))>0):
+			self.sclick(xpath)
 		time.sleep(3)
 		#確定
+		if(False):
+			xpath = "/html/body/div/div[2]/div[2]/p/a/img"
+			if(len(self.driver.find_elements(By.Xpath,xpath))>0):
+				self.sclick(xpath)
+
 		time.sleep(10)
 		#gmail.send() 
 		self.driver.quit()
@@ -80,4 +90,4 @@ class Observer:
 
 if __name__ == '__main__':
 	observer = Observer()
-	observer.observe()
+	observer.observe(month=1)
