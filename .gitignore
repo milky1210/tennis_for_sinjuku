@@ -1,7 +1,7 @@
 # 画像ファイルはアップしない
 images/*
 
-pwd_id.json
+pw_id.json
 
 
 __pycache__
