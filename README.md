@@ -1,13 +1,12 @@
 # tennis_for_sinjuku
 新宿区用のテニスコート監視・予約コード
 ## 環境整備
-pip3 install hogehoge
 
-にてパッケージを収集する。
+pipなどでパッケージを収集する。
 
-selenium, chrome-driver をhogehogeに代入すると良い。
+selenium, chrome-driver など
 
-pythonやそのパッケージは読者の環境次第なので、お好みの方法で必要なライブラリ、ドライバをインストールしてほしい。
+pythonやそのパッケージは利用者の環境次第なので、お好みの方法で必要なライブラリ、ドライバをインストールしてほしい。
 
 ## ユーザー情報ファイルに情報書き入れ
 sample_pwd_id.jsonファイルに新宿区の団体IDとパスワードを入力し、ファイル名をpwd_id.jsonに変更することで利用できます。
