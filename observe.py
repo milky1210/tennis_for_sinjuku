@@ -117,6 +117,10 @@ class Observer:
         time.sleep(10)
         # gmail.send()
         self.driver.quit()
+        if(selected):
+            return 0
+        else:
+            return -1
 
 
 if __name__ == "__main__":

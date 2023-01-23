@@ -1,6 +1,7 @@
 import argparse
 import csv
 import time
+import tweeter
 from observe import Observer
 import datetime
 
@@ -32,7 +33,10 @@ def main(args):
 
     print("observe start")
     observer=Observer()
-    observer.observe(month=args.month,date_time=time_list)
+    result = observer.observe(month=args.month,date_time=time_list)
+    if(result==0):
+        tweeter.tweet_txt("@milky9712, テニスコート予約成功")
+
 
     return 0
 
