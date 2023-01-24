@@ -7,17 +7,17 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options
 
 
-class Observer():
-    def __init__(self,visible=True):
+class Observer:
+    def __init__(self, visible=True):
         json_open = open("pw_id.json", "r")
         json_load = json.load(json_open)
         self.ID = json_load["ID"]
         self.PW = json_load["PW"]
-        if(visible):
+        if visible:
             self.driver = webdriver.Chrome()
         else:
             options = Options()
-            options.add_argument('--headless')
+            options.add_argument("--headless")
             self.driver = webdriver.Chrome(options=options)
 
     def sclick(self, xpath, shift=False):
