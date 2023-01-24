@@ -51,7 +51,6 @@ def main(args):
                 else:
                     date = i
                 time_list.append([date, j])
-    print(today, time_list)
     print("{}件の時間帯の予約を行います。".format(len(time_list)))
 
     print("observe start")
