@@ -59,7 +59,11 @@ def main(args):
     if len(result) > 0:
         txt = "@milky9712, 落合中央公園テニスコート予約成功\n"
         for re in result:
-            txt = txt + str(re[0]) + "日の," + str(re[1] * 2 + 7) + "時\n"
+            if(args.month==0):
+                date = today + re[0] - 1 
+            else:
+                date = re[0]
+            txt = txt + str(date) + "日の," + str(re[1] * 2 + 7) + "時\n"
         txt = txt + "以上の内容になります"
         tweeter.tweet_txt(txt)
     else:
