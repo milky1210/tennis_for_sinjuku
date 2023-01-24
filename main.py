@@ -29,6 +29,10 @@ def main(args):
         for i in range(begin,32,7):
             for j in range(1,6):
                 time_list.append([i,j])
+    if (len(args.addDays)>0):
+        for date in args.addDays:
+            for j in range(1,6):
+                time_list.append([date,j])
     print("{}件の時間帯の予約を行います。".format(len(time_list)))
 
     print("observe start")
@@ -49,5 +53,6 @@ if __name__ == '__main__':
     parser.add_argument('--addSat',action='store_true')
     parser.add_argument('--addNight',action='store_true')
     parser.add_argument('--repeat',default=60,type=int)  # min
+    parser.add_argument('--addDays',default=[],nargs="*",type=int)  # 日付のリスト
     args = parser.parse_args()
     main(args)

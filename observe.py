@@ -101,16 +101,19 @@ class Observer:
                 self.sclick(xpath)
                 selected = True
         self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/p/input")  # 予約リスト画面へ遷移
-        time.sleep(10)
+        time.sleep(1)
         xpath = "/html/body/div/div[2]/div[2]/p/a/img"
         if len(self.driver.find_elements(By.XPATH, xpath)) > 0 and selected:
             self.sclick(xpath)
-        time.sleep(3)
+        time.sleep(1)
         # 確定
         if True:
-            xpath = "/html/body/div/div[2]/div[2]/p/a/img"
+            xpath = "/html/body/div/div[2]/div[2]/p/a/input"
             if len(self.driver.find_elements(By.XPATH, xpath)) > 0 and selected:
                 self.sclick(xpath)
+                time.sleep(2)
+                alert = self.driver.switch_to.alert
+                alert.accept()
                 print("get!")
                 print(date_time)
 
@@ -121,9 +124,7 @@ class Observer:
             return 0
         else:
             return -1
-
-
 if __name__ == "__main__":
     # observerのテスト用スクリプト
     observer = Observer()
-    observer.observe(month=1)
+    observer.observe(month=1,date_time=[[2,5]])
