@@ -4,14 +4,21 @@ from selenium import webdriver  # Webブラウザを自動操作する（python 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.chrome.options import Options
 
 
-class Observer:
-    json_open = open("pw_id.json", "r")
-    json_load = json.load(json_open)
-    ID = json_load["ID"]
-    PW = json_load["PW"]
-    driver = webdriver.Chrome()
+class Observer():
+    def __init__(self,visible=True):
+        json_open = open("pw_id.json", "r")
+        json_load = json.load(json_open)
+        self.ID = json_load["ID"]
+        self.PW = json_load["PW"]
+        if(visible):
+            self.driver = webdriver.Chrome()
+        else:
+            options = Options()
+            options.add_argument('--headless')
+            self.driver = webdriver.Chrome(options=options)
 
     def sclick(self, xpath, shift=False):
 
@@ -128,5 +135,5 @@ class Observer:
 
 if __name__ == "__main__":
     # observerのテスト用スクリプト
-    observer = Observer()
+    observer = Observer(visible=False)
     observer.observe(month=1, date_time=[[2, 5]])

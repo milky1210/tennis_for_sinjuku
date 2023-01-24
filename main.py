@@ -35,7 +35,7 @@ def main(args):
     print("{}件の時間帯の予約を行います。".format(len(time_list)))
 
     print("observe start")
-    observer = Observer()
+    observer = Observer(visible= not args.hide)
     result = observer.observe(month=args.month, date_time=time_list)
     if len(result) > 0:
         txt = "@milky9712, 落合中央公園テニスコート予約成功\n"
@@ -43,7 +43,8 @@ def main(args):
             txt = txt + str(re[0]) + "日の," + str(re[1] * 2 + 7) + "時\n"
         txt = txt + "以上の内容になります"
         tweeter.tweet_txt(txt)
-
+    else:
+        print("正常に終了(予約は埋めっていました")
     return 0
 
 
@@ -56,5 +57,6 @@ if __name__ == "__main__":
     parser.add_argument("--addNight", action="store_true")
     parser.add_argument("--repeat", default=60, type=int)  # min
     parser.add_argument("--addDays", default=[], nargs="*", type=int)  # 日付のリスト
+    parser.add_argument("--hide", action="store_true")
     args = parser.parse_args()
     main(args)
