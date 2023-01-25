@@ -43,14 +43,15 @@ class Observer:
         self.driver.get(
             "https://user.shinjuku-shisetsu-yoyaku.jp/regasu/reserve/gin_menu"
         )  # ここから始めないと不正な値とか言われるorz
+        time.sleep(1)
         self.sclick(
             "/html/body/div/div[2]/ul[1]/li[2]/dl/dt/form/input[2]"
         )  # 高機能操作をクリック
-        time.sleep(1)
+        time.sleep(0.2)
         self.driver.find_element(
             By.XPATH, "/html/body/div/div[2]/div[1]/div/form/div/input[1]"
         ).send_keys(self.ID)
-        time.sleep(1)
+        time.sleep(0.2)
         self.driver.find_element(
             By.XPATH, "/html/body/div/div[2]/div[1]/div/form/div/input[2]"
         ).send_keys(self.PW)
