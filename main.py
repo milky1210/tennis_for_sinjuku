@@ -10,6 +10,8 @@ def main(args):
     time_list = []
     if args.addNight:
         for i in range(1, 31, 1):
+            if(args.month==0 and i<3):
+                break
             time_list.append([i, 6])
     dt_now = datetime.datetime.now()
     year = dt_now.year
@@ -25,7 +27,7 @@ def main(args):
             for j in range(1, 6):
                 if args.month == 0:
                     date = i - today + 1
-                    if date < 0 or 30 < date:
+                    if date < 3 or 30 < date:
                         break
                 else:
                     date = i
@@ -36,7 +38,7 @@ def main(args):
             for j in range(1, 6):
                 if args.month == 0:
                     date = i - today + 1
-                    if date < 0 or 30 < date:
+                    if date < 3 or 30 < date:
                         break
                 else:
                     date = i
@@ -75,9 +77,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--month", default=0, type=int, help="今月か来月かを0,1で指定.0:今月、1:来月")
     parser.add_argument("--input", default="", help="日時と時間のarrayファイルを指定.形式はcsv(未実装)")
-    parser.add_argument("--addSun", action="store_true", help="日曜日を追加,時間は9-19まで")
-    parser.add_argument("--addSat", action="store_true", help="土曜日を追加,時間は9-19まで")
-    parser.add_argument("--addNight", action="store_true", help="夜(19-)の枠のみを表示")
+    parser.add_argument("--addSun", action="store_true", help="日曜日を追加,時間は9-19まで,3日後から")
+    parser.add_argument("--addSat", action="store_true", help="土曜日を追加,時間は9-19まで,3日後から")
+    parser.add_argument("--addNight", action="store_true", help="夜(19-)の枠のみを表示, 3日後から")
     parser.add_argument(
         "--repeat", default=60, type=int, help="繰り返しのインターバル[min](未実装)"
     )  # min
