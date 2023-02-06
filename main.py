@@ -59,10 +59,10 @@ def main(args):
                     date = i
                 time_list.append([date, j])
     if len(args.addDays) > 0:
-        for date in args.addDays:
+        for i in args.addDays:
             for j in range(1, 6):
                 if args.month == 0:
-                    date = date - today + 1
+                    date = i - today + 1
                     if date < 0 or 30 < date:
                         break
                 else:
@@ -84,7 +84,7 @@ def main(args):
                 date = re[0]
             txt = txt + str(date) + "日の," + str(re[1] * 2 + 7) + "時\n"
         txt = txt + "以上の内容になります\n"
-        txt = txt + "アクセスログ：{}:{}:{}アクセス開始、{}:{}:{}アクセス完了\n".format(
+        txt = txt + "アクセスログ：{:02}:{:02}:{:02}アクセス開始、{:02}:{:02}:{:02}アクセス完了\n".format(
             startTime.hour,
             startTime.minute,
             startTime.second,
@@ -96,7 +96,7 @@ def main(args):
         print(txt)
     else:
         txt = "@milky9712, 正常に終了(予約は埋めっていました\n"
-        txt = txt + "アクセスログ：{}:{}:{}アクセス開始、{}:{}:{}アクセス完了\n".format(
+        txt = txt + "アクセスログ：{:02}:{:02}:{:02}アクセス開始、{:02}:{:02}:{:02}アクセス完了\n".format(
             startTime.hour,
             startTime.minute,
             startTime.second,
