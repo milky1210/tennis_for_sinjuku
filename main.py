@@ -96,7 +96,9 @@ def main(args):
         print(txt)
     else:
         txt = "@milky9712, 正常に終了(予約は埋めっていました\n"
-        txt = txt + "アクセスログ：{:02}:{:02}:{:02}アクセス開始、{:02}:{:02}:{:02}アクセス完了\n".format(
+        txt = txt + "アクセスログ：{}/{}-{:02}:{:02}:{:02}アクセス開始、{:02}:{:02}:{:02}アクセス完了\n".format(
+            startTime.month,
+            startTime.day,
             startTime.hour,
             startTime.minute,
             startTime.second,

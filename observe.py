@@ -108,7 +108,7 @@ class Observer:
                 len(self.driver.find_elements(By.XPATH, xpath)) > 0
             ):  # find_elementsの複数形に注意
                 self.sclick(xpath)
-                got_list.append([dt])
+                got_list.append(dt)
                 selected = True
         self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/p/input")  # 予約リスト画面へ遷移
         time.sleep(1)
@@ -125,9 +125,6 @@ class Observer:
                 alert = self.driver.switch_to.alert
                 alert.accept()
                 print("get!")
-                got_list.append(date_time)
-                print(date_time)
-
         time.sleep(10)
         # gmail.send()
         self.driver.quit()

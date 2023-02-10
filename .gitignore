@@ -6,3 +6,5 @@ pw_id.json
 config.py
 
 __pycache__
+
+log.txt
