@@ -36,7 +36,8 @@ class Observer:
         for xpath in xpaths:
             self.sclick(xpath, shift)
 
-    def observe(self, month=0, date_time=[[0, 5]]):
+    def observe(self, park=0, month=0, date_time=[[0, 5]]):
+        # park: 0->落合中央公園, 1->西落合公園
         # month: 0->今月,1->来月
         # date: 取りたい日付のリスト
         # time: 取りたい時
@@ -94,6 +95,8 @@ class Observer:
 
         self.driver.switch_to.window(self.driver.window_handles[1])
         self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/div/ul[1]/li/a/img")
+        if park == 1:  # 西落合公園なら遷移
+            self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/ul/li[2]/a[1]")
 
         if month == 1:  # 来月なら遷移。
             self.sclick("/html/body/div/div[2]/div[2]/div[2]/div/ul/li[2]/a[3]")
@@ -133,5 +136,5 @@ class Observer:
 
 if __name__ == "__main__":
     # observerのテスト用スクリプト
-    observer = Observer(visible=False)
-    observer.observe(month=1, date_time=[[2, 5]])
+    observer = Observer()
+    observer.observe(park=1, month=1, date_time=[[2, 5]])
