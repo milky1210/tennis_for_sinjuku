@@ -29,17 +29,17 @@ def main(args):
         begin = 1 + (6 - youbi) % 7
         for i in range(begin, 32, 7):
             for j in range(1, date_len):
-                if args.month == 0:
+                if args.month == month:
                     date = i - today + 1
-                    if date < 3 or 30 < date:
+                    if date < 5 or 30 < date:
                         break
                 else:
                     date = i
                 time_list0.append([date, j])
             for j in range(1, 4):
-                if args.month == 0:
+                if args.month == month:
                     date = i - today + 1
-                    if date < 3 or 30 < date:
+                    if date < 5 or 30 < date:
                         break
                 else:
                     date = i
@@ -48,17 +48,17 @@ def main(args):
         begin = 1 + (5 - youbi) % 7
         for i in range(begin, 32, 7):
             for j in range(1, date_len):
-                if args.month == 0:
+                if args.month == month:
                     date = i - today + 1
-                    if date < 3 or 30 < date:
+                    if date < 5 or 30 < date:
                         break
                 else:
                     date = i
                 time_list0.append([date, j])
             for j in range(1, 4):
-                if args.month == 0:
+                if args.month == month:
                     date = i - today + 1
-                    if date < 3 or 30 < date:
+                    if date < 5 or 30 < date:
                         break
                 else:
                     date = i
@@ -66,7 +66,7 @@ def main(args):
     if len(args.addDays) > 0:
         for i in args.addDays:
             for j in range(1, date_len):
-                if args.month == 0:
+                if args.month == month:
                     date = i - today + 1
                     if date < 0 or 30 < date:
                         break
@@ -74,7 +74,7 @@ def main(args):
                     date = i
                 time_list0.append([date, j])
             for j in range(1, 4):
-                if args.month == 0:
+                if args.month == month:
                     date = i - today + 1
                     if date < 0 or 30 < date:
                         break
@@ -97,7 +97,7 @@ def main(args):
                 date = today + re[0] - 1
             else:
                 date = re[0]
-            txt = txt + str(date) + "日の," + str(re[1] * 2 + 7) + "時\n"
+            txt = txt + str(date) + "日の," + str(re[1] * 2 + date_len + 1) + "時\n"
         txt = txt + "以上の内容になります\n"
         txt = txt + "アクセスログ：{:02}:{:02}:{:02}アクセス開始、{:02}:{:02}:{:02}アクセス完了\n".format(
             startTime.hour,
