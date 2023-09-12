@@ -16,7 +16,8 @@ def main(args):
     month = dt_now.month  # 取る対象の月
     today = dt_now.day
     youbi = datetime.datetime(year, month, 1).weekday()  # 0が月曜日
-    misoka = [31,28,31,30,31,30,31,31,30,31,30,31]
+    misoka = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    yutori = 6  # 6日よりあとは取らない
     if args.month in [1, 2, 3, 10, 11, 12]:  # 朝がない
         date_len = 6
     else:
@@ -32,22 +33,22 @@ def main(args):
             for j in range(1, date_len):
                 if args.month == month:
                     date = i - today + 1
-                    if date < 5 or 30 < date:
+                    if date < yutori or 30 < date:
                         break
                 else:
                     date = i
-                    if(today+5 -misoka[month-1] >=date):
+                    if today + yutori - misoka[month - 1] > date:
                         break
 
                 time_list0.append([date, j])
             for j in range(1, 4):
                 if args.month == month:
                     date = i - today + 1
-                    if date < 5 or 30 < date:
+                    if date < yutori or 30 < date:
                         break
                 else:
                     date = i
-                    if(today+5 -misoka[month-1] >=date):
+                    if today + yutori - misoka[month - 1] > date:
                         break
                 time_list1.append([date, j])
     if args.addSat:
@@ -56,21 +57,21 @@ def main(args):
             for j in range(1, date_len):
                 if args.month == month:
                     date = i - today + 1
-                    if date < 5 or 30 < date:
+                    if date < yutori or 30 < date:
                         break
                 else:
                     date = i
-                    if(today+5 -misoka[month-1] >=date):
+                    if today + yutori - misoka[month - 1] > date:
                         break
                 time_list0.append([date, j])
             for j in range(1, 4):
                 if args.month == month:
                     date = i - today + 1
-                    if date < 5 or 30 < date:
+                    if date < yutori or 30 < date:
                         break
                 else:
                     date = i
-                    if(today+5 -misoka[month-1] >= date):
+                    if today + yutori - misoka[month - 1] > date:
                         break
                 time_list1.append([date, j])
     if len(args.addDays) > 0:
@@ -78,25 +79,27 @@ def main(args):
             for j in range(1, date_len):
                 if args.month == month:
                     date = i - today + 1
-                    if date < 0 or 30 < date:
+                    if date < yutori or 30 < date:
                         break
                 else:
                     date = i
-                    if(today+5 -misoka[month-1] >= date):
+                    if today + yutori - misoka[month - 1] >= date:
                         break
                 time_list0.append([date, j])
             for j in range(1, 4):
                 if args.month == month:
                     date = i - today + 1
-                    if date < 0 or 30 < date:
+                    if date < yutori or 30 < date:
                         break
                 else:
                     date = i
-                    if(today+5 -misoka[month-1] >= date):
+                    if today + yutori - misoka[month - 1] >= date:
                         break
                 time_list1.append([date, j])
 
     print("{}件の時間帯の予約を行います。".format(len(time_list0) + len(time_list1)))
+    print(time_list0)
+    return
 
     print("observe start")
     observer = Observer(visible=not args.hide)
