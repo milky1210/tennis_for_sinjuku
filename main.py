@@ -16,6 +16,7 @@ def main(args):
     month = dt_now.month  # 取る対象の月
     today = dt_now.day
     youbi = datetime.datetime(year, month, 1).weekday()  # 0が月曜日
+    misoka = [31,28,31,30,31,30,31,31,30,31,30,31]
     if args.month in [1, 2, 3, 10, 11, 12]:  # 朝がない
         date_len = 6
     else:
@@ -35,6 +36,9 @@ def main(args):
                         break
                 else:
                     date = i
+                    if(today+5 -misoka[month-1] >=date):
+                        break
+
                 time_list0.append([date, j])
             for j in range(1, 4):
                 if args.month == month:
@@ -43,6 +47,8 @@ def main(args):
                         break
                 else:
                     date = i
+                    if(today+5 -misoka[month-1] >=date):
+                        break
                 time_list1.append([date, j])
     if args.addSat:
         begin = 1 + (5 - youbi) % 7
@@ -54,6 +60,8 @@ def main(args):
                         break
                 else:
                     date = i
+                    if(today+5 -misoka[month-1] >=date):
+                        break
                 time_list0.append([date, j])
             for j in range(1, 4):
                 if args.month == month:
@@ -62,6 +70,8 @@ def main(args):
                         break
                 else:
                     date = i
+                    if(today+5 -misoka[month-1] >= date):
+                        break
                 time_list1.append([date, j])
     if len(args.addDays) > 0:
         for i in args.addDays:
@@ -72,6 +82,8 @@ def main(args):
                         break
                 else:
                     date = i
+                    if(today+5 -misoka[month-1] >= date):
+                        break
                 time_list0.append([date, j])
             for j in range(1, 4):
                 if args.month == month:
@@ -80,6 +92,8 @@ def main(args):
                         break
                 else:
                     date = i
+                    if(today+5 -misoka[month-1] >= date):
+                        break
                 time_list1.append([date, j])
 
     print("{}件の時間帯の予約を行います。".format(len(time_list0) + len(time_list1)))
