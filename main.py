@@ -98,8 +98,6 @@ def main(args):
                 time_list1.append([date, j])
 
     print("{}件の時間帯の予約を行います。".format(len(time_list0) + len(time_list1)))
-    print(time_list0)
-    return
 
     print("observe start")
     observer = Observer(visible=not args.hide)
