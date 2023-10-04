@@ -18,7 +18,7 @@ def main(args):
     youbi = datetime.datetime(year, month, 1).weekday()  # 0が月曜日
     misoka = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     yutori = 6  # 6日よりあとは取らない
-    if args.month in [1, 2, 3, 10, 11, 12]:  # 朝がない
+    if args.month in [1, 2, 3, 11, 12]:  # 朝がない
         date_len = 6
     else:
         date_len = 7
