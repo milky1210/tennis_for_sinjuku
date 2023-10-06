@@ -23,3 +23,9 @@ python main.py --addSun --addSat --addNight
 
 にて監視用コードを動かし、平日19:00-と土日のコートが空いた時にとる。
 詳しくはpython main.py -hから
+
+
+##利用法
+基本的にはmonth.sh (ex: January.sh)にその月の監視対象を記載
+crontab に定期実行の旨を記載。
+

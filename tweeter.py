@@ -57,5 +57,6 @@ def tweet_txt(txt):
 
 
 if __name__ == '__main__':
+    pass
     # 検証用スクリプト
     #tweet_txt('API v2からこんにちは')
